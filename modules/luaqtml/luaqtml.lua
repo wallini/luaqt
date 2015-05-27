@@ -22,7 +22,6 @@
 
 require("QtCore")
 local LuaQtHelper = require("LuaQtHelper")
-require("luaqttypes")
 
 function requireUI(path)
 	return loadstring(require("uic").run(path))()

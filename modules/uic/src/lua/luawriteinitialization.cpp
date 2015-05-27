@@ -1458,8 +1458,10 @@ void WriteInitialization::writeProperties(const QString &varName,
         }
         case DomProperty::Size: {
              const DomSize *s = p->elementSize();
-            propertyValue = QString::fromLatin1("QSize(%1, %2)")
-                    .arg(s->elementWidth()).arg(s->elementHeight());;
+			QString qstr = QString::fromLatin1("QSize.new(%1, %2)")
+				.arg(s->elementWidth()).arg(s->elementHeight());
+			m_output << m_indent << "local qsize = " << qstr << ";\n";
+			propertyValue = "qsize";
             break;
         }
         case DomProperty::SizeF: {
